@@ -101,7 +101,7 @@ pub fn tokenize(text: []const u8) !Result(std.ArrayList(Token), InvalidToken) {
                 try list.append(lex_ident(text[start..index]));
             } 
             const opt_token: ?Token = switch (c) {
-                ' ' => null,
+                ' ', '\n', '\t', '\r' => null,
                 '(' => Token.lparen,
                 ')' => Token.rparen,
                 '{' => Token.lbrace,
